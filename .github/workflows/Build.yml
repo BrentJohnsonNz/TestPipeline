@@ -85,7 +85,7 @@ jobs:
           file-name: coverage.svg
           badge-branch: badges
           github-token: '${{ secrets.GITHUB_TOKEN }}'
-          coverage-file-name: ./coverage.cobertura.xml
+          coverage-file-name: ./Coverage/Results/coverage.cobertura.xml
 
       - name: Pack
         run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build
