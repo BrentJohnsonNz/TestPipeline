@@ -78,4 +78,4 @@ jobs:
         run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build
 
       - name: Publish
-        run: dotnet nuget push "**/*.nupkg" --source 'https://nuget.pkg.github.com/TestPipeline/index.json' --api-key ${{secrets.GITHUB_TOKEN}}
+        run: dotnet nuget push "**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{secrets.GITHUB_TOKEN}}
