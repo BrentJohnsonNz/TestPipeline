@@ -1,0 +1,78 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'TestPipeline.sln'
+      
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: csharpier
+        run: dotnet-csharpier --check .
+
+      - name: Code format check 
+        run: |
+          dotnet format analyzers --verify-no-changes
+          dotnet format style --verify-no-changes
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.301
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+
+      - name: Run tests
+        run: dotnet test /p:Configuration=$BUILD_CONFIG --no-restore --no-build
+
+      - name: Coverage
+        run: |
+          if [ -d Coverage ]; then rm -rf Coverage; fi
+          mkdir Coverage
+          dotnet test /p:Configuration=$BUILD_CONFIG --no-restore --no-build \
+            /p:CollectCoverage=true \
+            /p:CoverletOutput=../Coverage/Results/ \
+            /p:MergeWith=../Coverage/Results/coverage.json \
+            /p:CoverletOutputFormat="json%2ccobertura" \
+            -m:1 \
+            $SOLUTION
+          dotnet tool install dotnet-reportgenerator-globaltool --tool-path ./Coverage/Tools --ignore-failed-sources
+          ./Coverage/Tools/reportgenerator -reports:./Coverage/Results/coverage.cobertura.xml -targetdir:./Coverage/Results/
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: ./Coverage/Results/
+      
+      - name: Pack
+        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build
+
+      - name: Publish
+        run: dotnet nuget push "**/*.nupkg" --source 'https://nuget.pkg.github.com/TestPipeline/index.json' --api-key ${{secrets.GITHUB_TOKEN}}
