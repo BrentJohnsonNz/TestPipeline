@@ -64,7 +64,8 @@ jobs:
           name: code-coverage-report
           path: ./Coverage/Results/
 
-      - uses: 5monkeys/cobertura-action@master
+      - name: Check coverage percentage
+        uses: 5monkeys/cobertura-action@master
         with:
           path: ./Coverage/Results/coverage.cobertura.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
