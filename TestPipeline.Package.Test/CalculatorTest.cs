@@ -12,10 +12,10 @@ namespace TestPipeline.Package.Test
             Assert.AreEqual(5, Calculator.Calc(2, 3, Calculator.Operator.Add));
         }
 
-        [TestMethod]
-        public void Calc_Exception()
-        {
-            Assert.ThrowsException<NotImplementedException>(() => Calculator.Calc(2, 3, Calculator.Operator.None));
-        }
+        // [TestMethod]
+        // public void Calc_Exception()
+        // {
+        //     Assert.ThrowsException<NotImplementedException>(() => Calculator.Calc(2, 3, Calculator.Operator.None));
+        // }
     }
 }

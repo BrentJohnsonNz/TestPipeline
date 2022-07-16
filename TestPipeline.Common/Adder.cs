@@ -7,7 +7,6 @@ namespace TestPipeline.Common
     {
         public static int Add(int value1, int value2)
         {
-            bool b = false;
             return value1 + value2;
         }
     }
