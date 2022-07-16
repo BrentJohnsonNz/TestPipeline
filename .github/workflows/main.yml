@@ -32,7 +32,6 @@ jobs:
 
       - name: Code format check 
         run: |
-          dotnet format whitespace --verify-no-changes
           dotnet format analyzers --verify-no-changes
           dotnet format style --verify-no-changes
 
