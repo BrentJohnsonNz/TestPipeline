@@ -19,6 +19,7 @@
 	<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 	<IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
