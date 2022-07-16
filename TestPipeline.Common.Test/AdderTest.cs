@@ -6,10 +6,10 @@ namespace TestPipeline.Common.Test
     [TestClass]
     public class AdderTest
     {
-        //[TestMethod]
-        //public void Adder()
-        //{
-        //    Assert.AreEqual(3, Common.Adder.Add(1, 2));
-        //}
+        [TestMethod]
+        public void Adder()
+        {
+            Assert.AreEqual(3, Common.Adder.Add(1, 2));
+        }
     }
 }
