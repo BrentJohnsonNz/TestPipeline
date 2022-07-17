@@ -82,14 +82,16 @@ jobs:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
           coverage-file-name: ./Coverage/Results/coverage.cobertura.xml
 
-      - uses: paulhatch/semantic-version@v4.0.3
+      - name: Determine package version using semver
+        id: semver
+        uses: paulhatch/semantic-version@v5.0.0-alpha2
         with:
           tag_prefix: "v"
           format: "${major}.${minor}.${patch}"
           search_commit_body: false
 
       - name: Pack
-        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build
+        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.version }}
 
-      # - name: Publish
-      #   run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish
+        run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
