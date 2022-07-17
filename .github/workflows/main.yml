@@ -91,7 +91,7 @@ jobs:
           search_commit_body: false
 
       - name: Pack
-        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.outputs.version }}
+        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.outputs.version_tag }}
 
       - name: Publish
         run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
