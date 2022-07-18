@@ -3,8 +3,8 @@ name: CI
 on:
   push:
     branches: [ main ]
-
-  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -87,11 +87,11 @@ jobs:
         uses: paulhatch/semantic-version@v4.0.3
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${patch}"
+          format: "${major}.${minor}.${patch}-beta${increment}"
           search_commit_body: false
 
       - name: Pack
-        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.outputs.version_tag }}
+        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.outputs.version }}
 
       - name: Publish
         run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
