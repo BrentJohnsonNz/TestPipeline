@@ -9,5 +9,10 @@ namespace TestPipeline.Common
         {
             return value1 + value2;
         }
+
+        public static int Add(int value1, int value2, int value3)
+        {
+            return value1 + value2 + value3;
+        }
     }
 }
