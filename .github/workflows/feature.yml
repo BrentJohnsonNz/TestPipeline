@@ -85,11 +85,11 @@ jobs:
         uses: paulhatch/semantic-version@v4.0.3
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${patch}-feature${currentCommit}"
+          format: "${major}.${minor}.${patch}-feature"
           search_commit_body: false
 
       - name: Pack
-        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.outputs.version }}
+        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion="${{ steps.semver.outputs.version_tag }}"
 
       - name: Archive packages
         uses: actions/upload-artifact@v3
