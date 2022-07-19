@@ -11,5 +11,11 @@ namespace TestPipeline.Common.Test
         {
             Assert.AreEqual(3, Common.Adder.Add(1, 2));
         }
+
+        [TestMethod]
+        public void Adder3()
+        {
+            Assert.AreEqual(6, Common.Adder.Add(1, 2, 3));
+        }
     }
 }
