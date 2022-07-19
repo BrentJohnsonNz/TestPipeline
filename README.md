@@ -1,6 +1,6 @@
 # TestPipeline
 
-![main branch](https://github.com/BrentJohnsonNz/TestPipeline/actions/workflows/main.yml/badge.svg?branch=main)
+![main branch](https://github.com/BrentJohnsonNz/TestPipeline/actions/workflows/main.yml/badge.svg)
 ![coverage](https://raw.githubusercontent.com/BrentJohnsonNz/TestPipeline/badges/.badges/main/coverage.svg)
-![release branch](https://github.com/BrentJohnsonNz/TestPipeline/actions/workflows/release.yml/badge.svg?branch=release)
-![release](https://raw.githubusercontent.com/BrentJohnsonNz/TestPipeline/badges/.badges/release/release.svg)
+![release branch](https://github.com/BrentJohnsonNz/TestPipeline/actions/workflows/release.yml/badge.svg)
+![release](https://raw.githubusercontent.com/BrentJohnsonNz/TestPipeline/badges/.badges/release.svg)

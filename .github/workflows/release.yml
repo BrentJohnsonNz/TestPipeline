@@ -94,11 +94,11 @@ jobs:
       - name: Publish
         run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Write Build Status badge
+      - name: Write release version badge
         uses: action-badges/core@main
         with:
           badge-branch: badges
           file-name: release.svg
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           label: "release"
-          message: "${{ steps.semver.outputs.version }}"
+          message: "v${{ steps.semver.outputs.version }}"
