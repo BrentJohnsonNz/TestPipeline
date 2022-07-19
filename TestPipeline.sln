@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPipeline.Package", "TestPipeline.Package\TestPipeline.Package.csproj", "{4C50C51D-4D62-4A32-86CA-E09DE3836B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPipeline.Package", "TestPipeline.Package\TestPipeline.Package.csproj", "{4C50C51D-4D62-4A32-86CA-E09DE3836B20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPipeline.Common", "TestPipeline.Common\TestPipeline.Common.csproj", "{E4216FB5-93F8-420E-B661-D3E04C398FA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPipeline.Common.Test", "TestPipeline.Common.Test\TestPipeline.Common.Test.csproj", "{C1779F5C-4768-4E74-AC78-1FCE4C5B8C11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPipeline.Common.Test", "TestPipeline.Common.Test\TestPipeline.Common.Test.csproj", "{C1779F5C-4768-4E74-AC78-1FCE4C5B8C11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPipeline.Package.Test", "TestPipeline.Package.Test\TestPipeline.Package.Test.csproj", "{1A6CAB41-647C-4A0F-B7D7-B6B6D4494186}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPipeline.Package.Test", "TestPipeline.Package.Test\TestPipeline.Package.Test.csproj", "{1A6CAB41-647C-4A0F-B7D7-B6B6D4494186}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{8F4C9BC4-4C3E-41BA-9B0C-2B213EADBC3B}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,10 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{8F
 		.gitignore = .gitignore
 		Coverage.ps1 = Coverage.ps1
 		Directory.Build.props = Directory.Build.props
+		.github\workflows\feature.yml = .github\workflows\feature.yml
 		global.json = global.json
 		LICENSE = LICENSE
-		README.md = README.md
 		.github\workflows\main.yml = .github\workflows\main.yml
+		README.md = README.md
+		.github\workflows\release.yml = .github\workflows\release.yml
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject

@@ -1,10 +1,8 @@
-name: main
+name: release
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [ published ]
 
 jobs:
   build:
@@ -87,7 +85,7 @@ jobs:
         uses: paulhatch/semantic-version@v4.0.3
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${patch}-main{increment}"
+          format: "${major}.${minor}.${patch}"
           search_commit_body: false
 
       - name: Pack
@@ -95,3 +93,12 @@ jobs:
 
       - name: Publish
         run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Write Build Status badge
+        uses: action-badges/core@main
+        with:
+          badge-branch: badges
+          file-name: release.svg
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          label: "release"
+          message: "${{ steps.semver.outputs.version }}"

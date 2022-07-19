@@ -1,10 +1,8 @@
-name: main
+name: feature
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ 'feature/**' ]
 
 jobs:
   build:
@@ -72,7 +70,7 @@ jobs:
           path: ./Coverage/Results/coverage.cobertura.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           minimum_coverage: 100
-          fail_below_threshold: true
+          fail_below_threshold: false
           
       - name: Make coverage badge
         uses: action-badges/cobertura-coverage-xml-badges@0.2.1
@@ -87,11 +85,14 @@ jobs:
         uses: paulhatch/semantic-version@v4.0.3
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${patch}-main{increment}"
+          format: "${major}.${minor}.${patch}-feature${increment}"
           search_commit_body: false
 
       - name: Pack
         run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.outputs.version }}
 
-      - name: Publish
-        run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
+      - name: Archive packages
+        uses: actions/upload-artifact@v3
+        with:
+          name: nuget-packages
+          path: ./TestPipeline.*/**/*.nupkg
