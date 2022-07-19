@@ -87,7 +87,7 @@ jobs:
         uses: paulhatch/semantic-version@v4.0.3
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${patch}-main{increment}"
+          format: "${major}.${minor}.${patch}-main${increment}"
           search_commit_body: false
 
       - name: Pack
