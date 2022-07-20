@@ -83,15 +83,18 @@ jobs:
           coverage-file-name: ./Coverage/Results/coverage.cobertura.xml
 
       - name: Determine package version using semver
+        if: github.event_name != 'pull_request'
         id: semver
         uses: paulhatch/semantic-version@v4.0.3
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${patch}-main${increment}"
+          format: "${major}.${minor}.${patch}-main-${increment}"
           search_commit_body: false
 
       - name: Pack
+        if: github.event_name != 'pull_request'
         run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion=${{ steps.semver.outputs.version }}
 
       - name: Publish
+        if: github.event_name != 'pull_request'
         run: dotnet nuget push "TestPipeline.*/**/*.nupkg" --source 'https://nuget.pkg.github.com/BrentJohnsonNz/index.json' --api-key ${{ secrets.GITHUB_TOKEN }}
