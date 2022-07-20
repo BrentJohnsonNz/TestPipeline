@@ -89,7 +89,7 @@ jobs:
           search_commit_body: false
 
       - name: Pack
-        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion="${{ steps.semver.outputs.version }}-feature$(git rev-parse --short HEAD)"
+        run: dotnet pack --configuration $BUILD_CONFIG --no-restore --no-build -p:PackageVersion="${{ steps.semver.outputs.version }}-feature-$(git rev-parse --short HEAD)"
 
       - name: Archive packages
         uses: actions/upload-artifact@v3
