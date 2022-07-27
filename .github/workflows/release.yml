@@ -52,7 +52,7 @@ jobs:
             /p:PackageVersion=${{ steps.semver.outputs.version }} \
             /p:AssemblyVersion="${{ steps.semver.outputs.major }}.0.0" \
             /p:FileVersion="${{ steps.semver.outputs.major }}.${{ steps.semver.outputs.minor }}.${{ steps.semver.outputs.patch }}.$GITHUB_RUN_NUMBER" \
-            /p:InformationalVersion="${{ steps.semver.outputs.version }}-feature-$(git rev-parse --short HEAD)"
+            /p:InformationalVersion="${{ steps.semver.outputs.version }}"
 
       - name: Run tests
         run: dotnet test /p:Configuration=$BUILD_CONFIG --no-restore --no-build
