@@ -19,6 +19,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Determine package version using semver
+        id: semver
+        uses: paulhatch/semantic-version@v4.0.3
+        with:
+          tag_prefix: "v"
+          format: "${major}.${minor}.${patch}"
+          search_commit_body: false
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -37,14 +45,6 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-
-      - name: Determine package version using semver
-        id: semver
-        uses: paulhatch/semantic-version@v4.0.3
-        with:
-          tag_prefix: "v"
-          format: "${major}.${minor}.${patch}"
-          search_commit_body: false
 
       - name: Build
         run: |
