@@ -22,7 +22,6 @@ jobs:
           fetch-depth: 0
 
       - name: Determine package version using semver
-        if: github.event_name != 'pull_request'
         id: semver
         uses: paulhatch/semantic-version@v4.0.3
         with:
