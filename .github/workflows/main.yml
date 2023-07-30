@@ -23,7 +23,7 @@ jobs:
 
       - name: Determine package version using semver
         id: semver
-        uses: paulhatch/semantic-version@v4.0.3
+        uses: paulhatch/semantic-version@v5.0.3
         with:
           tag_prefix: "v"
           format: "${major}.${minor}.${patch}"
