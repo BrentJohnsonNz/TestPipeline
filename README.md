@@ -5,4 +5,4 @@
 ![release branch](https://github.com/BrentJohnsonNz/TestPipeline/actions/workflows/release.yml/badge.svg)
 ![release](https://raw.githubusercontent.com/BrentJohnsonNz/TestPipeline/badges/.badges/release.svg?branch=main)
 
-Bump version.
+Bump version..
