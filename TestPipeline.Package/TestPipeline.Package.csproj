@@ -3,17 +3,19 @@
   <PropertyGroup>
     <DebugType>embedded</DebugType>
     <Description>TestPipeline Package library.</Description>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <IncludeSymbols>true</IncludeSymbols>
+    <!-- <IncludeSymbols>true</IncludeSymbols> -->
     <IsPackable>true</IsPackable>
     <PackageId>TestPipeline.Package</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/BrentJohnsonNz/TestPipeline/tree/main/TestPipeline.Package</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/BrentJohnsonNz/TestPipeline</RepositoryUrl>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 
   <ItemGroup>
