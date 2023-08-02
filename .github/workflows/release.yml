@@ -24,7 +24,7 @@ jobs:
         uses: paulhatch/semantic-version@v5.0.3
         with:
           tag_prefix: "v"
-          format: "${major}.${minor}.${patch}"
+          version_format: "${major}.${minor}.${patch}"
           search_commit_body: false
 
       - name: Setup .NET
@@ -88,3 +88,9 @@ jobs:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           label: "release"
           message: "v${{ steps.semver.outputs.version }}"
+
+      - name: Archive packages
+        uses: actions/upload-artifact@v3
+        with:
+          name: nuget-packages
+          path: ./TestPipeline.*/**/*.nupkg
