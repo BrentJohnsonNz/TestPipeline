@@ -12,6 +12,7 @@
     <PackageProjectUrl>https://github.com/BrentJohnsonNz/TestPipeline/tree/main/TestPipeline.Package</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/BrentJohnsonNz/TestPipeline</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
