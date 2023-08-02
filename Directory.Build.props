@@ -8,7 +8,6 @@
   <PropertyGroup>
     <Authors>Brent Johnson</Authors>
     <Copyright>Copyright © Brent Johnson 2022</Copyright>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
