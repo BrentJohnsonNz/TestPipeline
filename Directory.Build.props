@@ -7,14 +7,12 @@
   </ItemGroup>  
   <PropertyGroup>
     <Authors>Brent Johnson</Authors>
-    <Company>InHouseOidc</Company>
     <Copyright>Copyright © Brent Johnson 2022</Copyright>
-    <DebugType>embedded</DebugType>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <ImplicitUsings>enable</ImplicitUsings>
-    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
